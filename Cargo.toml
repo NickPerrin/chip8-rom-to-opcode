@@ -4,6 +4,7 @@ license = "MIT"
 version = "0.1.0"
 authors = ["NickPerrin <perrin.64@osu.edu>"]
 description = "A simple tool to disassemble chip8 binary files."
+repository = "https://github.com/NickPerrin/chip8-rom-to-opcode"
 edition = "2018"
 
 [profile.dev]
