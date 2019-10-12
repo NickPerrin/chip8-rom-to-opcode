@@ -1,5 +1,5 @@
 [package]
-name = "chip8-rom-to-opcod"
+name = "chip8-rom-to-opcode"
 version = "0.1.0"
 authors = ["NickPerrin <perrin.64@osu.edu>"]
 edition = "2018"
