@@ -2,7 +2,7 @@ use std::string::String;
 
 // Opcode.opcode only used in tests
 #[allow(dead_code)]
-pub struct Opcode {
+struct Opcode {
     opcode: u16,
     address: u16,
     constant: u16,
@@ -69,10 +69,7 @@ impl<'a> RomData<'a> {
     ///
     /// # Return
     /// Returns a string containing the human readable opcode
-    ///
-    ///
-    /// @todo  remove public!!!
-    pub fn translate_opcode(&self, opcode: Opcode) -> String {
+    fn translate_opcode(&self, opcode: Opcode) -> String {
         match opcode.n1 {
             0x0 => match opcode.n4 {
                 0x0 => format!("0x0{:03X} CLS", self.addr()),

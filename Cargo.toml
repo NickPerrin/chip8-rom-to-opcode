@@ -1,7 +1,13 @@
 [package]
 name = "chip8-rom-to-opcode"
+license = "MIT"
 version = "0.1.0"
 authors = ["NickPerrin <perrin.64@osu.edu>"]
+description = "A simple tool to disassemble chip8 binary files."
 edition = "2018"
 
-[dependencies]
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
