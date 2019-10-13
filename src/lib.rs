@@ -74,7 +74,11 @@ impl<'a> RomData<'a> {
             0x0 => match opcode.n4 {
                 0x0 => format!("0x0{:03X} CLS", self.addr()),
                 0xE => format!("0x0{:03X} RET", self.addr()),
-                _ => format!("0x0{:03X} ???", self.addr()),
+                _ => format!(
+                    "0x0{:03X} ???     {:04x}",
+                    self.addr(),
+                    opcode.opcode
+                ),
             },
             0x1 => format!(
                 "0x0{:03X} JMP       0x0{:03X}",
@@ -171,7 +175,11 @@ impl<'a> RomData<'a> {
                     opcode.n2,
                     opcode.n3
                 ),
-                _ => format!("0x0{:03X} ???", self.addr()),
+                _ => format!(
+                    "0x0{:03X} ???     {:04x}",
+                    self.addr(),
+                    opcode.opcode
+                ),
             },
             0x9 => format!(
                 "0x0{:03X} SKIP_NE   V{:X} V{:X}",
@@ -180,7 +188,7 @@ impl<'a> RomData<'a> {
                 opcode.n3
             ),
             0xA => format!(
-                "0x0{:03X} LOAD      0x0{:03X}",
+                "0x0{:03X} LOAD    I 0x0{:03X}",
                 self.addr(),
                 opcode.address
             ),
@@ -209,7 +217,11 @@ impl<'a> RomData<'a> {
                 0xA => {
                     format!("0x0{:03X} SKIP_NKP  V{:X}", self.addr(), opcode.n2)
                 }
-                _ => format!("0x0{:03X} ???", self.addr()),
+                _ => format!(
+                    "0x0{:03X} ???     {:04x}",
+                    self.addr(),
+                    opcode.opcode
+                ),
             },
             0xF => match opcode.n3 {
                 0x0 => match opcode.n4 {
@@ -223,7 +235,11 @@ impl<'a> RomData<'a> {
                         self.addr(),
                         opcode.n2
                     ),
-                    _ => format!("0x0{:03X} ???", self.addr()),
+                    _ => format!(
+                        "0x0{:03X} ???     {:04x}",
+                        self.addr(),
+                        opcode.opcode
+                    ),
                 },
                 0x1 => match opcode.n4 {
                     0x5 => format!(
@@ -241,7 +257,11 @@ impl<'a> RomData<'a> {
                         self.addr(),
                         opcode.n2
                     ),
-                    _ => format!("0x0{:03X} ???", self.addr()),
+                    _ => format!(
+                        "0x0{:03X} ???     {:04x}",
+                        self.addr(),
+                        opcode.opcode
+                    ),
                 },
                 0x2 => {
                     format!("0x0{:03X} LOAD_FONT V{:X}", self.addr(), opcode.n2)
@@ -259,9 +279,15 @@ impl<'a> RomData<'a> {
                     self.addr(),
                     opcode.n2
                 ),
-                _ => format!("0x0{:03X} ???", self.addr()),
+                _ => format!(
+                    "0x0{:03X} ???     {:04x}",
+                    self.addr(),
+                    opcode.opcode
+                ),
             },
-            _ => format!("0x0{:03X} ???", self.addr()),
+            _ => {
+                format!("0x0{:03X} ???     {:04x}", self.addr(), opcode.opcode)
+            }
         }
     }
     /// Get a string containing all opcodes in the data stream.
